@@ -22,6 +22,10 @@ play with routes and route extension eg : /hello, / , hello/2, xyx
 order of routes is very important
 install postman app and make a workplace /collection >test api call
 write logic and test http methods on post man
+explore routing and use - query and params  and * in the routes
+use of rejex in routes /a/,/*fly$/
+reading the query and params and dynamic routes
+
 
 
 

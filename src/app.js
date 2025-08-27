@@ -1,21 +1,25 @@
 const express = require('express');
 const app = express();
 
-//query
-//http://localhost:3000/user?userId=01&password=testing
-app.get('/user',(req,res)=>{
-    console.log(req.query )
-    res.send({firstName:"Basil",lastName:"Varghese"})
-});
-
-//params
-//http://localhost:3000/user/01/basil/b@12jaksfh
-app.get('/user/:userId/:name/:password',(req,res)=>{
-    console.log(req.params)
-    res.send({firstName:"Basil",lastName:"Varghese"})
-});
-
-
+app.use('/user',(req,res,next)=>{
+    console.log('1st handler worked');
+    next();
+    
+},
+(req,res,next)=>{
+    console.log('2nd handler worked');
+    next()
+},
+(req,res,next)=>{
+    console.log('3rd handler worked');
+    next();
+    
+},
+(req,res)=>{
+    console.log('4th handler worked');
+    res.send('4th response')
+}
+)
 
 
 app.listen(3000,()=>{

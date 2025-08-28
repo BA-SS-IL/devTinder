@@ -40,5 +40,17 @@ write a dummy auth middileware for admin
 write a dummy auth middilware for user
 error handling using app.use('/',(err,req,res,next)=>{});
 
+create a free cluster on mongodb officiaal web site
+install mongodb librari
+connect your application to your mongodb
+call the connectionDB function and connect data base before server working
+
+create a userShema in your projects and create a user model and export
+/singup api to add data to db ,
+push some documents using api calls 
+make api call from postman
+
+
+
 
 

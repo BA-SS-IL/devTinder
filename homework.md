@@ -38,6 +38,7 @@ how express js basically handles requrests behhind scenes;
 differents between app.all() vs app.use().  - routing differents 
 write a dummy auth middileware for admin 
 write a dummy auth middilware for user
+error handling using app.use('/',(err,req,res,next)=>{});
 
 
 

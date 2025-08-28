@@ -26,7 +26,18 @@ explore routing and use - query and params  and * in the routes
 use of rejex in routes /a/,/*fly$/
 reading the query and params and dynamic routes
 
+multipple route handlers use with app.use()
+next()
+next() function with errors along with res.send('response')
+app.use('/roter',r1,r2,r3,r4)
+app.use('/roter',[r1,r2,r3,r4])
+app.use('/roter',[r1,r2],r3,r4)should practice with 
 
+what is middleware
+how express js basically handles requrests behhind scenes;
+differents between app.all() vs app.use().  - routing differents 
+write a dummy auth middileware for admin 
+write a dummy auth middilware for user
 
 
 

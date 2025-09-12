@@ -49,6 +49,16 @@ create a userShema in your projects and create a user model and export
 /singup api to add data to db ,
 push some documents using api calls 
 make api call from postman
+differents between json and js 
+add the express.json middileware
+make your sign up api dynamic to receive data from the end user
+user.findOne() with duplicate emails and ids which object return
+api - user by email
+api - feed api - get all users from the data base
+create a delete user api 
+api CRUD operations and explore documentation speacially models
+
+
 
 
 

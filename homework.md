@@ -58,6 +58,16 @@ api - feed api - get all users from the data base
 create a delete user api 
 api CRUD operations and explore documentation speacially models
 
+explore schema type option from the documentation
+add require unique min length maxlwngth trim default create custom validation function for gender
+improve the db schema;
+
+data sanitazing - api level validation on patch and post api
+add api validation for each fields
+
+install validator
+explore validator library
+
 
 
 

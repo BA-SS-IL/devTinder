@@ -10,10 +10,13 @@ app.post('/signUp',async (req,res)=>{
     const user = new User(req.body)
 
     try{
+        if(user?.skills.length>5){
+            throw new Error("skill is more than 5");    
+        }
         await user.save();
         res.send('updated user information');
     }catch(err){
-        res.status(400).send('can not update user information')
+        res.status(400).send('can not update user information'+err)
     }
 })
 
@@ -49,7 +52,7 @@ app.get('/feed',async (req,res)=>{
 
 //delete user short hand
 app.delete('/user',async (req,res)=>{
-    const userId = req.body.userId;   
+    const userId = req.body._id;   
     try {
         //await User.findByIdAndDelete({_id:userId});
       const user =  await User.findOneAndDelete(userId);
@@ -59,22 +62,49 @@ app.delete('/user',async (req,res)=>{
     }
 });
 
-//
+//update existing user
 
-app.patch('/user',async (req,res)=>{
-    const userId = req.body.userId;
+app.patch('/update/:userId',async (req,res)=>{
+    const userId = req.params?.userId;
     const data = req.body;
     try {
-        const user = await User.findByIdAndUpdate({_id:userId},data);
+        //api level validation
+        const allowedUpadate = [
+           "photoUrl",
+            "gender",
+            "age",
+            "about",
+            "skills"
+        ]
+
+        const isUpdateAllowed = Object.keys(data).every((k)=>allowedUpadate.includes(k))
+
+        if(!isUpdateAllowed){
+              throw new Error("update not allowed");              
+        }
+
+        if(data?.skills.length > 5){
+            throw new Error("skills length is morethan 5");
+            
+        }
+
+        const user = await User.findByIdAndUpdate({_id:userId},data,{
+            returnDocument:'after',
+            runValidators:true
+        })
+        
+
         if(user){
-            res.send(data)
+            res.send(user)
         }else{
-            res.status(400).send('can not update user details')
+            res.status(404).send('something went wrong when user updated')
         }
     } catch (error) {
-        res.status(400).send('something went wrong');
+        res.status(400).send('update failed'+error)
     }
-});
+})
+
+
 
 connectDB()
 .then(()=>{

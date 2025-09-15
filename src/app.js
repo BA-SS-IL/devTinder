@@ -2,21 +2,61 @@ const express = require('express');
 const app = express();
 const connectDB = require('./config/database');
 const User = require('./models/user');
+const {validateSignUpData} = require('./utils/validation');
+const bcrypt = require('bcrypt');
+const e = require('express');
+
 
 
 app.use(express.json());
 
-app.post('/signUp',async (req,res)=>{
-    const user = new User(req.body)
-
-    try{
-        if(user?.skills.length>5){
-            throw new Error("skill is more than 5");    
+//signup
+app.post('/signUp',async(req,res)=>{
+    
+    try {
+        validateSignUpData(req);
+        
+        const {firstName,lastName,skills,password,emailId} = req.body;
+        const isExisting = await User.findOne({emailId:emailId})
+        if(isExisting){
+            throw new Error("user already signUp");
+            
         }
+        const passwordHash =  await bcrypt.hash(password,10);
+
+        const user = new User({
+            firstName,
+            lastName,
+            skills,
+            password:passwordHash,
+            emailId,
+        })
+
         await user.save();
-        res.send('updated user information');
-    }catch(err){
-        res.status(400).send('can not update user information'+err)
+        res.send('updated user details')
+
+    } catch (error) {
+        res.status(400).send('ERROR SIGNUP'+error)
+    }
+})
+
+//login api
+app.post('/login',async (req,res)=>{
+    try {
+        const {emailId,password} = req.body;
+        const user = await User.findOne({emailId:emailId});
+        if(!user){
+            throw new Error("email id is not valid");
+        }
+        const isPassword = bcrypt.compare(password,user.password);
+        if(isPassword){
+            res.send('login successfull');
+        }else{
+            throw new Error("password is not valid");
+            
+        }
+    } catch (error) {
+        res.status(400).send('ERROR: '+error)
     }
 })
 
@@ -116,4 +156,5 @@ connectDB()
 .catch((err)=>{
     console.error(err)
 })
+
 

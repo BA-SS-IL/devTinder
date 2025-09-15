@@ -67,6 +67,14 @@ add api validation for each fields
 
 install validator
 explore validator library
+never trust req.body - anything will come here
+
+validate signup helper function
+instal bcrypt and password hash
+crate login api and write logic by your own
+compare password and throw error if any error
+
+
 
 
 

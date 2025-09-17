@@ -74,6 +74,20 @@ instal bcrypt and password hash
 crate login api and write logic by your own
 compare password and throw error if any error
 
+instal cookie-parser
+just sent a dummycookie
+create a profle api
+instal jsonwebtoken
+in login api ,after email and password validation, create jwt token and sent it user in cookies
+read the cookies inside your profile api and find the logged in user;
+
+user auth middileware
+create add the user aut middileware in profile api and new sendconnectionrequest api
+set exipiry of jwt token and cookies to set 7 days
+
+create userShema methods to get jwt , 
+create userShema methods to compare passwords;
+
 
 
 

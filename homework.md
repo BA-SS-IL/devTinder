@@ -88,6 +88,10 @@ set exipiry of jwt token and cookies to set 7 days
 create userShema methods to get jwt , 
 create userShema methods to compare passwords;
 
+you have to explore or read documentation for express.router
+create a route folder for managing auth,profile,request router
+create routers auth,profile,requrest ,feed, all these routes
+import all routers in app.js
 
 
 

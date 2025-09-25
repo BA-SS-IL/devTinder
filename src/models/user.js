@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     firstName:{
         type:String,
         required:true,
+        index:true,
         minLength:1,
         maxLength:50,
         trim:true,
@@ -89,7 +90,7 @@ userSchema.methods.getJWT = async function () {
 }
 
 userSchema.methods.validatePassword = async function (userInputPassword) {
-    const user = this;
+    const user = this; 
     const passwordHash = user.password;
 
     const isPassword = await bcrypt.compare(userInputPassword,passwordHash);

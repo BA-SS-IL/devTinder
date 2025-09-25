@@ -93,6 +93,26 @@ create a route folder for managing auth,profile,request router
 create routers auth,profile,requrest ,feed, all these routes
 import all routers in app.js
 
+create post/logout api
+create patch / profile/edit
+create patch /profile/password - (forgot password)
+
+ create conncectonrequest api
+ propper validation for api and conncetionRequest Schema
+ think about corener cases
+ $or and $and queiry in mongoose read about more 
+ 
+schema.pre() read about this
+what is indexes? what is the purpose
+advanteges and creating unneccessary indexes 
+read this article about copond index and index
+
+
+
+
+ 
+
+
 
 
 

@@ -101,11 +101,20 @@ create patch /profile/password - (forgot password)
  propper validation for api and conncetionRequest Schema
  think about corener cases
  $or and $and queiry in mongoose read about more 
- 
+
 schema.pre() read about this
 what is indexes? what is the purpose
 advanteges and creating unneccessary indexes 
 read this article about copond index and index
+
+write code with propper validation for post /request/review/:status/:requestId;
+thougth process - post and get
+ref-populate
+create api get/user/request/received with all the checks
+
+logic for get/feed api
+explore $nin $ne $and and other queiry operators
+
 
 
 
